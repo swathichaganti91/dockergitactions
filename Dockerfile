@@ -96,12 +96,12 @@ RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
 
 # Install necessary packages: OpenJDK 11, Maven, and other utilities
 #RUN apt-get update && apt-get install -y \
-    openjdk-11-jdk \
-    maven \
-    wget \
-    curl \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+#   openjdk-11-jdk \
+#   maven \
+#    wget \
+#    curl \
+#    git \
+#    && rm -rf /var/lib/apt/lists/*
 
 # Set JAVA_HOME environment variable
 #ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
@@ -125,10 +125,10 @@ RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
 
 # Install necessary packages
 #RUN apt-get update && apt-get install -y \
-    openjdk-11-jdk \
-    wget \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+#    openjdk-11-jdk \
+#    wget \
+#    curl \
+#    && rm -rf /var/lib/apt/lists/*
 
 # Set the Java environment variables
 #ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
@@ -136,9 +136,9 @@ RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
 
 # Download and extract Tomcat (correcting the download and extraction paths)
 #RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.95/bin/apache-tomcat-9.0.95.tar.gz -O /tmp/tomcat.tar.gz && \
-    mkdir /opt/tomcat && \
-    tar xzvf /tmp/tomcat.tar.gz -C /opt/tomcat --strip-components=1 && \
-    rm /tmp/tomcat.tar.gz
+#    mkdir /opt/tomcat && \
+#    tar xzvf /tmp/tomcat.tar.gz -C /opt/tomcat --strip-components=1 && \
+#    rm /tmp/tomcat.tar.gz
 
 # Set up Tomcat environment variables
 #ENV CATALINA_HOME=/opt/tomcat
