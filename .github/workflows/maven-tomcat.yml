@@ -22,7 +22,8 @@ jobs:
             git checkout .
 
             docker build -t docker1 .
-            docker run -p 8078:8080 -d --name swathi docker1
+            docker run -p 8079:8080 -d --name swathich docker1
 
             docker ps -a
             docker logs docker1 || true
+
