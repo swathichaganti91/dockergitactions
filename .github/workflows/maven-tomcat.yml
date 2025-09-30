@@ -7,10 +7,11 @@ on:
 
 jobs:
   deploy:
+    name: Deploy Docker App to EC2
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2
+      - name: Deploy via SSH to EC2
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -19,14 +20,24 @@ jobs:
           script: |
             set -eux
 
-            cd /home/ec2-user/project-name  # go to the project directory
-            git pull origin main            # pull the latest code
+            cd /home/ec2-user
 
+            # Clone the repo if it's not already there
+            if [ ! -d "dockergitactions" ]; then
+              git clone https://github.com/swathichaganti91/dockergitactions.git
+            fi
+
+            cd dockergitactions
+            git pull origin main
+
+            # Stop and remove old container if exists
             docker stop swathi123 || true
             docker rm swathi123 || true
 
+            # Build and run the Docker container
             docker build -t docker1 .
-            docker run -p 8082:8080 -d --name swathi123 docker1
+            docker run -d -p 8082:8080 --name swathi123 docker1
 
+            # Debug info
             docker ps -a
             docker logs swathi123 || true
