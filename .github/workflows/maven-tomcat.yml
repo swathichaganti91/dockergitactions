@@ -19,11 +19,14 @@ jobs:
           script: |
             set -eux
 
-            git checkout .
+            cd /home/ec2-user/project-name  # go to the project directory
+            git pull origin main            # pull the latest code
+
+            docker stop swathi123 || true
+            docker rm swathi123 || true
 
             docker build -t docker1 .
             docker run -p 8082:8080 -d --name swathi123 docker1
 
             docker ps -a
             docker logs swathi123 || true
-
