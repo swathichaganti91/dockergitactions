@@ -22,7 +22,8 @@ jobs:
             git checkout .
 
             docker build -t docker1 .
-            docker run -p 8068:8080 -d --name swathi docker1
+            docker run -p 8082:8080 -d --name swathi123 docker1
 
             docker ps -a
-            docker logs swathi || true  # <--- FIXED container name here
+            docker logs swathi123 || true
+
